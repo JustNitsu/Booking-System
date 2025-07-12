@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Rock Resort Hotel </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(139, 69, 19, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            background-image: url('assets/Images/logo.png');
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #8B4513;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+
+        }
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(44, 24, 16, 0.9);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(222, 184, 135, 0.5);
+        }
+
+        .profile-dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .profile-dropdown-content a:hover {
+            background-color: rgba(222, 184, 135, 0.2);
+        }
+
+        .profile-dropdown:hover .profile-dropdown-content {
+            display: block;
+        }
+ 
+         /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url(../assets/Images/background.png);
+            background-size: cover;
+            background-position: center;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.02"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.04"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); */
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            color: rgb(255, 255, 255);
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            
+            text-shadow : 0 0 5px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #A0522D, 0 0 25px #A0522D, 0 0 30px #A0522D;
+
+
+        }
+
+        .hero .tagline {
+            color: #f4f4f4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-style: italic;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero .subtitle {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(160, 82, 45, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 15px 35px;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #8B4513;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe5 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            color: #8B4513;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #D2B48C;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #8B4513;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Rooms Section */
+        .rooms {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+            color: white;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .room-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .room-image {
+            height: 250px;
+            background: linear-gradient(45deg, #DEB887, #D2B48C);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+        }
+
+        .room-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="%23DEB887"/><rect x="20" y="80" width="160" height="60" fill="%23D2B48C"/><rect x="30" y="90" width="30" height="40" fill="%238B4513"/><rect x="50" y="100" width="100" height="20" fill="%23A0522D"/><circle cx="170" cy="30" r="15" fill="%23FFD700"/></svg>');
+            opacity: 0.3;
+        }
+
+        .room-content {
+            padding: 30px;
+        }
+
+        .room-title {
+            color: #8B4513;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .room-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .room-feature {
+            background: rgba(139, 69, 19, 0.1);
+            color: #8B4513;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .room-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: #8B4513;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .price small {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: normal;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(160, 82, 45, 0.3);
+        }
+
+        .see-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.see-more .book-btn {
+    background: linear-gradient(135deg, #A0522D, #8B4513);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.see-more .book-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(160, 82, 45, 0.3);
+}
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe5 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            color: #8B4513;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c1810;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #DEB887;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #DEB887;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .features-grid, .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .room-card {
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .feature-card, .room-content {
+                padding: 25px 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Booking Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #8B4513;
+        }
+
+        .modal h2 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-text {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Old Rock Resort Hotel</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-outline" id="signInBtn">Sign In</a>
+                <a href="register.html" class="btn-outline" id="registerBtn">Register</a>
+                <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                    <a href="#" class="btn-outline">Profile</a>
+                    <div class="profile-dropdown-content">
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Old Rock Resort Hotel</h1>
+        <p class="tagline">A Seaside Sanctuary in Bolinao</p>
+        <p class="subtitle">Rooted in Rock, Blessed with Sunset Views</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary" onclick="triggerBooking('Explore Our Rooms')">Explore Rooms</a>
+            <a href="#amenities" class="btn-secondary">Our Amenities</a>
+        </div>
+    </div>
+</section>
+
+
+            <!-- Features Section -->
+            <section class="features" id="amenities">
+                <div class="container">
+                <div class="section-title animate-on-scroll">
+            <h2>Old Rock Amenities</h2>
+            <p>Immerse yourself in a tropical escape where rustic beauty meets coastal serenity in Bolinao, Pangasinan.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <span class="feature-icon">🪨</span>
+                <h3>Rock-Themed Pool</h3>
+                <p>Swim in our iconic pool surrounded by hand-crafted coral stone architecture and tranquil waterfalls.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <span class="feature-icon">🌅</span>
+                <h3>Sunset Lounge</h3>
+                <p>Watch stunning sunsets from our cliffside view decks, perfectly facing the West Philippine Sea.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <span class="feature-icon">🍴</span>
+                <h3>Garden Restaurant</h3>
+                <p>Dine al fresco under rock canopies with fresh seafood and local Ilocano-Pangasinan specialties.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <span class="feature-icon">🌺</span>
+                <h3>Floral Courtyard</h3>
+                <p>Relax in our tropical gardens filled with vibrant blooms, perfect for quiet walks and photo ops.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <span class="feature-icon">🛖</span>
+                <h3>Native-Inspired Rooms</h3>
+                <p>Experience island living in rooms made with natural textures and locally crafted wood and stone.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <span class="feature-icon">🔥</span>
+                <h3>Night Bonfires</h3>
+                <p>Gather by the beach for cozy bonfires under the stars with music, grilling, and good company.</p>
+            </div>
+        </div>
+        </div>
+            </section>
+
+         <!-- Section -->
+            <section class="rooms" id="rooms">
+                <div class="container">
+                    <div class="section-title animate-on-scroll">
+                        <h2 style="color: white;">Our Rooms</h2>
+                        <p style="color: rgba(255,255,255,0.9);">Experience comfort and island charm in our cozy, coastal-inspired accommodations</p>
+                    </div>
+
+                    <div class="rooms-grid">
+
+                        <!-- Deluxe Room -->
+                        <div class="room-card animate-on-scroll">
+                            <div class="room-image">
+                                <img src="../assets/Images/FamilyR-K.jpeg" alt="Deluxe Family Room" style="width: 100%; height: 100%; object-fit: cover;"/>
+                            </div>
+                            <div class="room-content">
+                                <h3 class="room-title">Deluxe Family Room</h3>
+                                <p class="room-description">Spacious and elegant room perfect for families, featuring cozy beds, a lounge area, and warm lighting.</p>
+                                <div class="room-features">
+                                    <span class="room-feature">3 Beds</span>
+                                    <span class="room-feature">Airconditioned</span>
+                                    <span class="room-feature">Lounge & Dining</span>
+                                    <span class="room-feature">Hot Shower</span>
+                                </div>
+                                <div class="room-price">
+                                    <div class="price">₱6,800 <small>per night</small></div>
+                                    <a href="#" class="book-btn" onclick="triggerBooking('Deluxe Family Room - ₱6,800/night')">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Couple Room -->
+                        <div class="room-card animate-on-scroll">
+                            <div class="room-image">
+                                <img src="../assets/Images/CoupleRoom.jpeg" alt="Couple Room" style="width: 100%; height: 100%; object-fit: cover;"/>
+                            </div>
+                            <div class="room-content">
+                                <h3 class="room-title">Couple Room</h3>
+                                <p class="room-description">Perfect for two, featuring cozy interiors, soft lighting, and beach-inspired decor.</p>
+                                <div class="room-features">
+                                    <span class="room-feature">Queen Bed</span>
+                                    <span class="room-feature">AC</span>
+                                    <span class="room-feature">Private Bathroom</span>
+                                </div>
+                                <div class="room-price">
+                                    <div class="price">₱4,500 <small>per night</small></div>
+                                    <a href="#" class="book-btn" onclick="triggerBooking('Couple Room - ₱4,500/night')">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Standard Family Room -->
+                        <div class="room-card animate-on-scroll">
+                            <div class="room-image">
+                                <img src="../assets/Images/StandardFR.jpeg" alt="Standard Family Room" style="width: 100%; height: 100%; object-fit: cover;"/>
+                            </div>
+                            <div class="room-content">
+                                <h3 class="room-title">Standard Family Room</h3>
+                                <p class="room-description">Comfortable room fit for families, with enough space for bonding and relaxation.</p>
+                                <div class="room-features">
+                                    <span class="room-feature">Double Bed + Single Beds</span>
+                                    <span class="room-feature">Private CR</span>
+                                    <span class="room-feature">Airconditioned</span>
+                                </div>
+                                <div class="room-price">
+                                    <div class="price">₱5,800 <small>per night</small></div>
+                                    <a href="#" class="book-btn" onclick="triggerBooking('Standard Family Room - ₱5,800/night')">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- See More Button -->
+                    <div class="see-more">
+                        <a href="../code/all-room.html" class="book-btn">See More</a>
+                    </div>
+                </div>
+            </section>
+                                            
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2>Ready to Experience Luxury?</h2>
+                <p>Book your stay today and discover why Old Rock Hotel has been the choice of discerning travelers for over a century.</p>
+                <a href="#" class="btn-primary" onclick="triggerBooking('Make a Reservation')">Make Reservation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Old Rock Hotel</h3>
+                    <p>Experience timeless elegance and unparalleled service at our historic luxury hotel, where tradition meets modern comfort.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📍 Brgy. Arnedo, Bolinao, Pangasinan</p>
+                    <p>📞 +63 75 123-4567</p>
+                    <p>✉️ reservations@oldrockhotel.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#rooms">Rooms & Suites</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#">Dining</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">COVID-19 Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Old Rock Hotel. All rights reserved. | Old Rock Resort Hotel</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>🏛️ Sign In Required</h2>
+            <div class="modal-text">
+                <p>To book your stay at Old Rock Hotel, please sign in to your account or create a new one.</p>
+                <p>This helps us provide you with personalized service and manage your reservations efficiently.</p>
+            </div>
+            <div class="modal-buttons">
+                <a href="../code/login.html" class="btn-primary" onclick="redirectToAuth('login')">Sign In</a>
+                <a href="../code/register.html" class="btn-secondary" onclick="redirectToAuth('register')">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Booking flow functions
+        function triggerBooking(roomType) {
+            const loggedInUser = sessionStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                window.location.href = 'booking-form.html';
+                return;
+            }
+
+            const modal = document.getElementById('bookingModal');
+            const modalText = modal.querySelector('.modal-text');
+            
+            if (roomType.includes('₱')) {
+                modalText.innerHTML = `
+                    <p><strong>Selected: ${roomType}</strong></p>
+                    <p>To complete your booking, please sign in to your account or create a new one.</p>
+                    <p>This helps us provide you with personalized service and manage your reservations efficiently.</p>
+                `;
+            } else {
+                modalText.innerHTML = `
+                    <p>To explore our rooms and make a reservation, please sign in to your account or create a new one.</p>
+                    <p>This helps us provide you with personalized service and manage your reservations efficiently.</p>
+                `;
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showAuthModal(type) {
+            const modal = document.getElementById('bookingModal');
+            const modalText = modal.querySelector('.modal-text');
+            
+            if (type === 'login') {
+                modalText.innerHTML = `
+                    <p>Welcome back to Old Rock Hotel!</p>
+                    <p>Sign in to access your account, manage reservations, and enjoy personalized service.</p>
+                `;
+            } else {
+                modalText.innerHTML = `
+                    <p>Join the Old Rock Hotel family!</p>
+                    <p>Create your account to unlock exclusive benefits, manage bookings, and enjoy personalized experiences.</p>
+                `;
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function redirectToAuth(type) {
+            if (type === 'login') {
+                // Redirect to login page
+                window.location.href = 'login.html';
+            } else {
+                //REdirect to registration page
+              window.location.href = 'register.html';
+
+            }
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .book-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!this.classList.contains('loading')) {
+                    this.classList.add('loading');
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Dynamic year in footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            const footerText = document.querySelector('.footer-bottom p');
+            if (footerText) {
+                footerText.innerHTML = footerText.innerHTML.replace('2025', currentYear);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = sessionStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                document.getElementById('signInBtn').style.display = 'none';
+                document.getElementById('registerBtn').style.display = 'none';
+                document.getElementById('profileDropdown').style.display = 'inline-block';
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            sessionStorage.removeItem('loggedInUser');
+            window.location.reload();
+        });
+ 
+        // Add hover effects to room cards
+        document.querySelectorAll('.room-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click animation to feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Console welcome message
+        console.log(`
+        🏛️ Welcome to Old Rock Hotel - Landing Page
+        ═══════════════════════════════════════════
+        
+        This is a demo landing page for a luxury hotel booking system.
+        
+        Features included:
+        ✅ Responsive design with mobile optimization
+        ✅ Smooth scrolling and scroll animations
+        ✅ Interactive booking flow with authentication prompts
+        ✅ Modern UI with vintage hotel aesthetic
+        ✅ SEO-friendly structure
+        
+        Next steps for your booking system:
+        1. Create login/registration pages
+        2. Build room booking interface
+        3. Add user dashboard
+        4. Implement backend API integration
+        
+        Built with ❤️ for Old Rock Hotel
+        `);
+    </script>
+</body>
+</html>
